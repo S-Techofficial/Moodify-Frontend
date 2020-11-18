@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    justify-content: center;
+    align-content: center;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* signup */
+.container{
+    min-height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.form.container{
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+    padding: 40px;
+    border: #000 solid 2px;
+}
+
+input[type=text],input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.btn{
+    width: 50%;
+    background-color: transparent;
+    color: black;
+    padding: 14px 20px;
+    margin: 10px auto;
+    border: #000 solid 2px;
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+}
+  
+.btn:hover {
+    background-color: #ec5858;
+    color: #fff;
+    transition: 0.5s;
+    border: #ec5858 solid;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success{
+    background-color: #28df99;
+}
+
+/* home */
+.home__container{
+    width: 100%;
+}
+
+.homeContainer__dashboard{
+    display: flex;
+    height: 90vh;
+}
+
+/* home/sidebar  */
+.sidebar__container{
+    flex: 0.15;
+    border-right: #000 solid 2px;
+    height: 100%;
+    padding-left: 30px;
+    position: relative;
+}
+
+
+.title__option{
+    display: flex;
+}
+
+.title__option > h2{
+    font-style: normal;
+    font-weight: normal;
+    line-height: 15px;
+    color: #000000;
+    opacity: 0.6;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.title__option > .MuiSvgIcon-root{
+    font-size: 30px;
+    color: #000;
+    opacity: 0.6;
+    margin: 10px 10px 0 0;
+}
+
+.title__option:hover > h2{
+    opacity: 1;
+}
+
+.library__option{
+    margin: 20px 0;
+}
+
+
+.library__option > li{
+    margin-top: 5px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.getPremium__button{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+}
+
+.getPremium__button > h3{
+    font-size: 18px;
+}
+.getPremium__button > img{
+    width: 25px;
+    height: 25px;
+    margin-top: -5px;
+}
+
+/* home/main */
+.songs__dashboard{
+    flex: 0.85;
+    height: 100%;
+}
+
+.navbar__container{
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    border-bottom: #000 solid 1px;
+}
+
+.searchBar__container{
+    display: flex;
+    border: #000 solid 2px;
+    border-radius: 30px;
+    max-width: 400px;
+    padding: 10px;
+}
+
+
+.searchBar__container > input{
+    max-width: 300px;
+    height: 10px;
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+
+
+.profile__image{
+    height: 40px;
+    width: 40px;
+    border: #000 solid 2px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}   
+
+/* home/Dashboard */
+.dashboard__container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.dashboard__main{
+    flex: 0.8;
+    border-right: #000 solid 1px;
+}
+
+.dashboardBlocks__container{
+    padding: 10px 20px;
+    min-height: 200px; 
+}
+
+.dashboardBlocks__heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboardBlocks__heading > a{
+    text-decoration: none;
+    font-size: 15px;
+    color: #000000;
+    opacity: 0.6;
+}
+
+a:hover{
+    opacity: 1;
+}
+
+.player__container{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    width: 100vw;
+    border-top: #000 solid 1px;
+    background-color: #fff;
+}
+
+
+.SongCircle__container{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
