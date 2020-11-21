@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { authenticate, isAuthenticated, signin } from '../auth/helper';
-import '../../styles.css'; 
+import '../../styles.css';
 // import Base from '../core/Base'
 
 
@@ -54,7 +54,7 @@ function Signin() {
 
     const performRedirect = () => {
         if (isAuthenticated()) {
-            return <Redirect to="/" />
+            return <Redirect to="/user/dashboard" />
         }
     };
 
@@ -123,6 +123,8 @@ function Signin() {
     return (
         // <Base title="SignIn Page" description="A tshirt store">
         <div>
+            {successMessage()}
+            {errorMessage()}
             {loadingMessage()}
             {signInForm()}
             <p className="text-center">{JSON.stringify(values)}</p>

@@ -1,22 +1,10 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import Player from './Player';
-import Navbar from './Navbar';
-import Dashboard from '../user/Dashboard';
+import React from 'react'
+import Navbar from './Navbar'
 
 function Home() {
     return (
-        <div className="home__container">
-            <div className="homeContainer__dashboard">
-                <Sidebar />
-                <div className="songs__dashboard">
-                    <Navbar />
-                    <Dashboard />
-                </div>
-            </div>
-            
-            <Player />
-
+        <div>
+            <Navbar />
         </div>
     )
 }

@@ -1,18 +1,40 @@
-import React from 'react'
-import SongCircle from './SongCircle'
+import React, { useEffect, useState } from 'react'
+import { getSongs } from './helper/coreapicalls'
+import SongBox from './SongBox';
 
-function SongBlock({
-    name="Song Name",
-    artist = "Artist",
-    album = "Album",
-    image = "https://images.unsplash.com/photo-1502447533750-9860c1269ae3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-    mood = "sad"
-}) {
+
+
+function SongBlock() {
+
+
+    const [songs, setSongs] = useState([]);
+    const [error, setError] = useState(false);
+
+    const loadSongs = () => {
+        getSongs().then(data => {
+            if (data.error) {
+                setError(data.error)
+                console.log(error)
+            } else {
+                setSongs(data)
+            }
+        }).catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        loadSongs()
+    }, [])
+
+
+
     return (
         <div className="SongBlock__container">
-            <SongCircle image={image} mood={mood} />
-            <h3>{name}</h3>
-            <p>{artist} - {album}</p>
+            {songs.map((song, index) => {
+                return (
+                    <SongBox image={song.image} audio={song.audio} name={song.name} artist={song.artist} album={song.album} />
+                )
+            })}
+
         </div>
     )
 }

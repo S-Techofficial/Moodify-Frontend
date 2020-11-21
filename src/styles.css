@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 body{
@@ -9,6 +10,10 @@ body{
     overflow-x: hidden;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar{
+    display: none;
 }
 
 /* signup */
@@ -87,6 +92,34 @@ input[type=text],input[type=email], input[type=password] {
     position: relative;
 }
 
+.sidebarOption{
+    display: flex;
+    align-items: center;
+    color: grey;
+    height: 30px;
+    cursor: pointer;
+    transition: 200ms color ease-in;
+}
+
+.sidebarOption:hover{
+    color: #000;
+}
+
+.sidebarOption_icon{
+    padding-right: 10px;
+}
+
+.sidebarOption > h4{
+    font-size: 20px;
+}
+
+.sidebarOption > .MuiSvgIcon-root{
+    font-size: 30px;
+}
+
+
+
+
 
 .title__option{
     display: flex;
@@ -109,20 +142,13 @@ input[type=text],input[type=email], input[type=password] {
     margin: 10px 10px 0 0;
 }
 
-.title__option:hover > h2{
-    opacity: 1;
-}
+
 
 .library__option{
     margin: 20px 0;
 }
 
 
-.library__option > li{
-    margin-top: 5px;
-    list-style: none;
-    cursor: pointer;
-}
 
 .getPremium__button{
     display: flex;
@@ -153,48 +179,70 @@ input[type=text],input[type=email], input[type=password] {
 
 .navbar__container{
     display: flex;
-    padding: 10px 20px;
     justify-content: space-between;
+    padding: 20px;
     border-bottom: #000 solid 1px;
 }
 
 .searchBar__container{
-    display: flex;
-    border: #000 solid 2px;
+    flex: 0.5;
+    min-width: 70px;
+    background-color: transparent;
+    color: grey;
     border-radius: 30px;
-    max-width: 400px;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    border: #000 solid 2px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 
 .searchBar__container > input{
-    max-width: 300px;
-    height: 10px;
-    margin: 0;
-    border: 0;
+    border: none;
+    width: 100%;
     outline: none;
+    margin-left: 10px;
+    padding: 0;
 }
 
 
 .profile__image{
-    height: 40px;
-    width: 40px;
     border: #000 solid 2px;
     border-radius: 50%;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
+    background-color: transparent;
+    color: #000;
 }   
+
+.navbar__right{
+    display: flex;
+    width: 200px;
+    justify-content: space-evenly;
+}
+
+.navbar__right > li{
+    list-style: none;
+    padding-top: 10px;
+}
+
+li > a, span > a{
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* home/Dashboard */
 .dashboard__container{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 90%;
+    position: relative;
 }
 
 .dashboard__main{
     flex: 0.8;
     border-right: #000 solid 1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .dashboardBlocks__container{
@@ -214,6 +262,14 @@ input[type=text],input[type=email], input[type=password] {
     opacity: 0.6;
 }
 
+.dashboardBlocks_element{
+    overflow-x: scroll;
+}
+
+a{
+    text-decoration: none;
+}
+
 a:hover{
     opacity: 1;
 }
@@ -223,15 +279,231 @@ a:hover{
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75px;
+    height: 80px;
     width: 100vw;
     border-top: #000 solid 1px;
     background-color: #fff;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+.SongBlock__container{
+    margin-top: 20px;
+    width: fit-content;
+    text-align: center;
+    max-width: 150px;
+    display: flex;
+}
+
+.SongBox__container{
+    box-shadow: 2px 6px 6px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.SongBox__container:hover{
+    transform: scale(1.1);
+    transition: 0.4s;
+}
 
 .SongCircle__container{
     height: 100px;
     width: 100px;
     border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.SongCircle__container:hover{
+    opacity: 0.6;
+}
+
+.SongCircle__container:hover > .playButton{
+    display: block;
+}
+
+.player__container > div {
+    display: flex;
+}
+
+.player__container > div > .SongCircle__container{
+    height: 60px;
+    width: 60px;
+    margin: 10px;
+}
+
+.player__container > div > .SongCircle__container > .playButton{
+    display: none;
+}
+
+
+.playerSong__details{
+    margin: 10px;
+}
+
+.player__buttons{
+    display: block;
+}
+
+.player__audio{
+    flex: 0.3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+}
+
+
+
+.player__audio * .MuiSlider-root{
+    color: black;
+}
+
+.playButton{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 50%;
+    display: none;
+}
+
+.playButton > .MuiSvgIcon-root{
+    font-size:70px;
+    color:#000;
+}
+
+#timer {
+    position: absolute;
+    top: 10px;
+    left: 3%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  }
+
+#duration {
+    position: absolute;
+    top: 10px;
+    right: 3%;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+  }
+
+.slider-container{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.slider-container > .bar{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fill{
+    display: absolute;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    background-color: #000;
+    height: 5px;
+}
+
+.slider-container > .slider{
+    position: absolute;
+    z-index: 3;
+    background-color: transparent;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.slider-container > .slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 0 0 0 rgba(0,0,0,.1);
+    transition: .3s ease-in-out;
+}
+
+.slider-container > .slider::-webkit-slider-thumb:hover{
+    box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+}
+
+.slider-container > .slider:active::-webkit-slider-thumb{
+    box-shadow: 0 0 0 20px rgba(0,0,0,.2);
+}
+
+
+
+
+
+/* user/profile */
+
+.profile__container{
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    padding: 20px;
+    align-items: flex-end;
+}
+
+.profile__container > .profile__image{
+    height: 20vw;
+    width: 20vw;
+    min-width: 115px;
+    min-height: 115px;
+    margin: 0 20px;
+    background-color: transparent;
+    color: #000;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.profile__image > .editButton{
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0.6;
+    border: none;
+    border-radius: 50%;
+    display: none;
+}
+
+.profile__image:hover > .editButton{
+    display: block;
+}
+
+
+/* category, palylist */
+.element__container{
+    margin: 20px;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.25);
+    height: auto;
+}
+
+.element__container > .SongBlock__container{
+    display: flex;
+    width: 100%;
 }

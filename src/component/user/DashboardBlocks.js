@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import SongBlock from '../core/SongBlock'
 
 function DashboardBlocks({
-    title= 'Trending',
-    link = 'See More',
-    className="dashboardBlocks_heading",
-    children
+    title,
 }) {
     return (
         <div className="dashboardBlocks__container">
@@ -15,7 +12,7 @@ function DashboardBlocks({
                 <Link to="playlists/"><p>See more...</p></Link>
             </div>
             <div className="dashboardBlocks_element">
-                <SongBlock />
+                <SongBlock/>
             </div>
         </div>
     )

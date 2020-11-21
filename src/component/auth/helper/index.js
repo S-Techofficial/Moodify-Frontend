@@ -19,7 +19,6 @@ export const signin = (user) => {
     const formData = new FormData()
 
     for (const name in user) {
-        console.log(user[name]);
         formData.append(name, user[name]);
     }
 

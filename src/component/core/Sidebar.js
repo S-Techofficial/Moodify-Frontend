@@ -4,9 +4,21 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import FolderOpenOutlinedIcon from '@material-ui/icons/FolderOpenOutlined';
 import { getCategories, getPlaylists } from './helper/coreapicalls';
 import crown from '../../crown.png';
-import { isAuthenticated } from '../auth/helper';
+import SidebarOption from './SidebarOption';
+import { Link, withRouter } from 'react-router-dom'
 
-function Sidebar() {
+
+const currentTab = (history, path) => {
+    if (history.location.pathname === path) {
+        return { color: "#000" }
+    } else {
+        return { color: "gray" }
+    }
+}
+
+
+
+function Sidebar({ history }) {
 
 
     const [categories, setCategories] = useState([]);
@@ -31,7 +43,6 @@ function Sidebar() {
                 console.log(error)
             } else {
                 setPlaylists(data)
-                console.log(data)
             }
         }).catch(err => console.log(err))
     }
@@ -39,36 +50,28 @@ function Sidebar() {
     useEffect(() => {
         loadCategories()
         loadPlaylists()
-    },[])
+    }, [])
+
+
 
     return (
         <div className="sidebar__container">
             <Logo />
-            <div className="title__option">
-                <HomeOutlinedIcon />
-                <h2>Home</h2>
-            </div>
-            <div className="title__option">
-                <FolderOpenOutlinedIcon />
-                <h2>Browse</h2>
-            </div>
+            <Link style={currentTab(history, "/user/dashboard")} to="/user/dashboard"><SidebarOption Icon={HomeOutlinedIcon} title="Home" /></Link>
+            <Link style={currentTab(history, "/browse")} to="/browse"><SidebarOption Icon={FolderOpenOutlinedIcon} title="Browse" /></Link>
 
             <div class="library__option">
                 <h3>YOUR LIBRARY</h3>
-                {categories.map((category, index) => {
-                    return (
-                        <li key={index}>{category.name}</li>
-                    )
-                })}
+                {categories.map(category => (
+                    <Link style={currentTab(history, `category/${category.id}`)} to={`/category/${category.id}`}><SidebarOption title={category.name} /></Link>
+                ))}
             </div>
 
             <div class="library__option">
                 <h3>CUSTOM PLAYLISTS</h3>
-                {playlists.map((playlist, index) => {
-                    return (
-                        <li key={index}>{playlist.name}</li>
-                    )
-                })}
+                {playlists.map(playlist => (
+                    <Link style={currentTab(history, `playlist/${playlist.id}`)} to={'/playlist/' + playlist.id}><SidebarOption title={playlist.name} /></Link>
+                ))}
             </div>
 
             <button className="btn getPremium__button">
@@ -80,4 +83,4 @@ function Sidebar() {
     )
 }
 
-export default Sidebar
+export default withRouter(Sidebar)
